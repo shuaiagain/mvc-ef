@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using MvcEFDemo.DAL;
+using MvcEFDemo.Models;
 namespace MvcEFDemo.Controllers
 {
     public class AccountController : Controller
@@ -27,7 +29,17 @@ namespace MvcEFDemo.Controllers
             string email = fc["exampleInputEmail"];
             string pwd = fc["exampleInputPassword"];
 
-            ViewBag.LoginState = "登录后...";
+            AccountContext db = new AccountContext();
+            SysUser user = db.SysUsers.Where(u => u.Email == email && u.Password == pwd).FirstOrDefault();
+            if (user == null)
+            {
+                ViewBag.LoginState = email + "用户不存在";
+            }
+            else
+            {
+                ViewBag.LoginState = email + " 登录后...";
+            }
+
             return View();
         }
 

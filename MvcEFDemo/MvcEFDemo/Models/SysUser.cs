@@ -13,6 +13,8 @@ namespace MvcEFDemo.Models
 
         public string Password { get; set; }
 
+        public string Email { get; set; }
+
         public virtual ICollection<SysUserRole> SysUserRoles { get; set; }
     }
 }
