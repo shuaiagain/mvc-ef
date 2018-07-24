@@ -7,3 +7,5 @@ bin
 UploadFiles
 Release
 PublishProfiles
+/MvcEFDemo/MvcEFDemo/Web.Debug.config
+/MvcEFDemo/MvcEFDemo/Web.Release.config
