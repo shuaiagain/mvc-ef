@@ -13,7 +13,8 @@ namespace MvcEFDemo.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            AccountContext accountDb = new AccountContext();
+            return View(accountDb.SysUsers);
         }
 
         public ActionResult Login()
