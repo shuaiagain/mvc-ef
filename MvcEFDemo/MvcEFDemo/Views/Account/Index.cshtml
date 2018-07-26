@@ -1,28 +1,30 @@
 ﻿@using System.Collections.Generic
 @using MvcEFDemo.Models
 @model IEnumerable<SysUser>
-
+@*@model SysUser*@
 <div>
+    <p>@Html.ActionLink("Create New", "Create")</p>
+
+
     <table>
         <tr>
-            <th>
-                @Html.DisplayNameFor(a => a.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(a => a.Email)
-            </th>
-            <th>
-
-            </th>
+            <th>@Html.DisplayNameFor(mo => mo.UserName)</th>
+            <th>@Html.DisplayNameFor(mo => mo.Email)</th>
+            <th>Operate</th>
         </tr>
-
         @foreach (var item in Model)
         {
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
+                <td>@Html.DisplayFor(mo => item.UserName)</td>
+                <td>@Html.DisplayFor(mo => item.Email)</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
             </tr>
         }
     </table>
+
+
 </div>

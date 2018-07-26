@@ -1,0 +1,28 @@
+﻿@using MvcEFDemo.Models;
+@model SysUser
+@{
+    ViewBag.Title = "Create";
+}
+<div>
+    <h2>Create</h2>
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(model => model.UserName)
+            @Html.EditorFor(model => model.UserName)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password)
+        </div>
+        <div>
+            <input type="submit" value="Create" />
+        </div>
+    }
+
+    <div>@Html.ActionLink("Back to List", "Index")</div>
+</div>
