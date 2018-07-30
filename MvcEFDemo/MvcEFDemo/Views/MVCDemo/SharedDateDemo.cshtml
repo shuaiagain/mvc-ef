@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "SharedDateDemo";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>SharedDateDemo</h2>
+<div>
+    <h1>主题view的时间值</h1>
+    @ViewBag.DateTime
+    <h1>使用@@Html.Partial的时间值</h1>
+    @Html.Partial("PartialPageDateTime");
+    <h1>使用@@Html.View中的时间值</h1>
+    @Html.Action("PartialViewDate");
+</div>

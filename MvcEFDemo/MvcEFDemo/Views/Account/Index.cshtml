@@ -3,9 +3,18 @@
 @model IEnumerable<SysUser>
 @*@model SysUser*@
 <div>
+
+
+    <div>
+        <h1>通过@@Html.Partial使用</h1>
+        @Html.Partial("~/Views/Shared/_PartialPageWidget.cshtml")
+        <h1>通过@@Html.RenderPartial使用</h1>
+        @{
+            Html.RenderPartial("~/Views/Shared/_PartialPageWidget.cshtml");
+        }
+    </div>
+
     <p>@Html.ActionLink("Create New", "Create")</p>
-
-
     <table>
         <tr>
             <th>@Html.DisplayNameFor(mo => mo.UserName)</th>

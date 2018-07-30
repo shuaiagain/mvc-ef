@@ -123,6 +123,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\MVCDemoController.cs" />
     <Compile Include="DAL\AccountContext.cs" />
     <Compile Include="DAL\AccountInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,7 +139,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Global.asax" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\css\bootstrap-theme.css" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\css\bootstrap-theme.min.css" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\css\bootstrap.css" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\css\bootstrap.min.css" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\js\bootstrap.js" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\js\bootstrap.min.js" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\js\npm.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -182,6 +194,37 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\css\bootstrap-theme.css.map" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\css\bootstrap.css.map" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\css\bootstrap.min.css.map" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="OpenSource\bootstrap-3.3.7\dist\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MVCDemo\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_PartialPageWidget.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MVCDemo\PartialPageDateTime.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MVCDemo\SharedDateDemo.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
