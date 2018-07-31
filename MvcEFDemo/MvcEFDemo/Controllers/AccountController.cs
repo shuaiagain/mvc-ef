@@ -7,16 +7,50 @@ using System.Web.Mvc;
 using MvcEFDemo.DAL;
 using MvcEFDemo.Models;
 using System.Data.Entity;
+using PagedList.Mvc;
+using PagedList;
 namespace MvcEFDemo.Controllers
 {
     public class AccountController : Controller
     {
 
         #region Index
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchStr, int? page, string currentFilter)
         {
             AccountContext accountDb = new AccountContext();
-            return View(accountDb.SysUsers);
+
+            ViewBag.SortKey = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CurrentFilter = currentFilter;
+            var users = (from u in accountDb.SysUsers
+                         select u);
+
+            if (!string.IsNullOrEmpty(searchStr))
+            {
+                page = 1;
+                users = users.Where(u => u.UserName.Contains(searchStr));
+            }
+            else
+            {
+                searchStr = currentFilter;
+            }
+
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    users = users.OrderByDescending(u => u.UserName);
+                    break;
+                default:
+                    users = users.OrderBy(u => u.UserName);
+                    break;
+
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            //return View(users.ToList());
+            return View(users.ToPagedList(pageNumber, pageSize));
         }
         #endregion
 
@@ -112,20 +146,20 @@ namespace MvcEFDemo.Controllers
         {
             SysUser sysUser = new AccountContext().SysUsers.Find(id);
             return View(sysUser);
-        } 
+        }
         #endregion
 
         #region DeleteConfirmed
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-           var db=new AccountContext();
-            SysUser sysUser =db.SysUsers.Find(id);
+            var db = new AccountContext();
+            SysUser sysUser = db.SysUsers.Find(id);
             db.SysUsers.Remove(sysUser);
             db.SaveChanges();
 
             return RedirectToAction("Index");
-        } 
+        }
         #endregion
 
     }

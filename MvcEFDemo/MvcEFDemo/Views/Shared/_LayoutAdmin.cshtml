@@ -5,22 +5,65 @@
     <meta name="viewport" content="width=device-width" />
     <meta charset="utf-8" />
     <title>mvc+ef</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/dashboard.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="header">
-        <ul class="nav nav-tabs nav-stacked">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">Profile</a></li>
-            <li role="presentation"><a href="#">Messages</a></li>
-        </ul>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">MVCDemo</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse navbar-right">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">DashBoard</a></li>
+                    <li><a href="#about">Settings</a></li>
+                    <li><a href="#contact">Profile</a></li>
+                    <li><a href="#contact">Help</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="main">
-        <div>
-            @RenderBody()
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Analytics</a></li>
+                    <li><a href="#">Export</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">Nav item</a></li>
+                    <li><a href="">Nav item again</a></li>
+                    <li><a href="">One more nav</a></li>
+                    <li><a href="">Another nav item</a></li>
+                    <li><a href="">More navigation</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">Nav item again</a></li>
+                    <li><a href="">One more nav</a></li>
+                    <li><a href="">Another nav item</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Dashboard</h1>
+                <div class="row placeholders">
+                    @RenderBody()
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer">
+                 
+
     </div>
 </body>
 </html>

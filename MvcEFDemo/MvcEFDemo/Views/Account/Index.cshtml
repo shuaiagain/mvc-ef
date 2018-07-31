@@ -1,24 +1,36 @@
 ﻿@using System.Collections.Generic
+@using System.Web.Mvc
+@using PagedList.Mvc
+@using PagedList
 @using MvcEFDemo.Models
-@model IEnumerable<SysUser>
+@*@model IEnumerable<SysUser>*@
+@model PagedList<SysUser>
 @*@model SysUser*@
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    //var pageList = new PagedList<SysUser>();
+}
 <div>
 
-
-    <div>
-        <h1>通过@@Html.Partial使用</h1>
-        @Html.Partial("~/Views/Shared/_PartialPageWidget.cshtml")
-        <h1>通过@@Html.RenderPartial使用</h1>
-        @{
-            Html.RenderPartial("~/Views/Shared/_PartialPageWidget.cshtml");
-        }
-    </div>
-
     <p>@Html.ActionLink("Create New", "Create")</p>
+    @using (Html.BeginForm("Index", "Account", FormMethod.Get))
+    {
+        <p>
+            Find By Name:@Html.TextBox("SearchStr", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" />
+        </p>
+    }
     <table>
         <tr>
-            <th>@Html.DisplayNameFor(mo => mo.UserName)</th>
-            <th>@Html.DisplayNameFor(mo => mo.Email)</th>
+            <th>
+                @*@Html.DisplayNameFor(mo => mo.UserName)*@
+                UserName
+                @Html.ActionLink("UserName", "Index", new { sortOrder = ViewBag.SortKey, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(mo => mo.Email)*@
+                Email
+            </th>
             <th>Operate</th>
         </tr>
         @foreach (var item in Model)
@@ -35,5 +47,10 @@
         }
     </table>
 
+    <br />
+    <div style="text-align:left;">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
 
 </div>
