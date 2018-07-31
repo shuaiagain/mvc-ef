@@ -11,6 +11,7 @@
         <div>
             @Html.LabelFor(model => model.UserName)
             @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model=>model.UserName)
         </div>
         <div>
             @Html.LabelFor(model => model.Email)

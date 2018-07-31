@@ -22,8 +22,10 @@ namespace MvcEFDemo.Controllers
             ViewBag.SortKey = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.CurrentSort = sortOrder;
             ViewBag.CurrentFilter = currentFilter;
-            var users = (from u in accountDb.SysUsers
-                         select u);
+            //var users = (from u in accountDb.SysUsers
+            //             select u);
+
+            var users = accountDb.SysUsers.Include(u => u.SysDepartment);
 
             if (!string.IsNullOrEmpty(searchStr))
             {
@@ -111,11 +113,16 @@ namespace MvcEFDemo.Controllers
         [HttpPost]
         public ActionResult Create(SysUser sysUser)
         {
-            var db = new AccountContext();
-            db.SysUsers.Add(sysUser);
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                var db = new AccountContext();
+                sysUser.CreateDate = DateTime.Now;
+                db.SysUsers.Add(sysUser);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-            return RedirectToAction("Index");
+            return View();
         }
         #endregion
 

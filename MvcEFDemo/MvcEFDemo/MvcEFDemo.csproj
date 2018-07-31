@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\MVCDemoController.cs" />
+    <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="DAL\AccountContext.cs" />
     <Compile Include="DAL\AccountInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -146,12 +147,26 @@
     <Compile Include="Migrations\201807310731185_AddTestTable.Designer.cs">
       <DependentUpon>201807310731185_AddTestTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807310742063_AddCreateDateToSysUser.cs" />
+    <Compile Include="Migrations\201807310742063_AddCreateDateToSysUser.Designer.cs">
+      <DependentUpon>201807310742063_AddCreateDateToSysUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807310804376_MaxLengthOnNames.cs" />
+    <Compile Include="Migrations\201807310804376_MaxLengthOnNames.Designer.cs">
+      <DependentUpon>201807310804376_MaxLengthOnNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807310848541_AddSysDepartmentTable.cs" />
+    <Compile Include="Migrations\201807310848541_AddSysDepartmentTable.Designer.cs">
+      <DependentUpon>201807310848541_AddSysDepartmentTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\SysDepartment.cs" />
     <Compile Include="Models\SysRole.cs" />
     <Compile Include="Models\SysUser.cs" />
     <Compile Include="Models\SysUserRole.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\UserRoleIndexData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -183,7 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -253,6 +267,18 @@
     <EmbeddedResource Include="Migrations\201807310731185_AddTestTable.resx">
       <DependentUpon>201807310731185_AddTestTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807310742063_AddCreateDateToSysUser.resx">
+      <DependentUpon>201807310742063_AddCreateDateToSysUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807310804376_MaxLengthOnNames.resx">
+      <DependentUpon>201807310804376_MaxLengthOnNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807310848541_AddSysDepartmentTable.resx">
+      <DependentUpon>201807310848541_AddSysDepartmentTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserRole\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
