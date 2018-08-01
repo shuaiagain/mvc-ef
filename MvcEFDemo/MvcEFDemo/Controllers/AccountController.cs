@@ -9,6 +9,7 @@ using MvcEFDemo.Models;
 using System.Data.Entity;
 using PagedList.Mvc;
 using PagedList;
+using System.Data.SqlClient;
 namespace MvcEFDemo.Controllers
 {
     public class AccountController : Controller
@@ -97,7 +98,13 @@ namespace MvcEFDemo.Controllers
         #region Details
         public ActionResult Details(int id)
         {
-            SysUser user = new AccountContext().SysUsers.Find(id);
+            //SysUser user = new AccountContext().SysUsers.Find(id);
+            string sql = string.Format(@"select * from SysUser where ID = @ID ");
+            List<SqlParameter> paramList = new List<SqlParameter>();
+
+            paramList.Add(new SqlParameter("@ID", id));
+
+            SysUser user = new AccountContext().SysUsers.SqlQuery(sql, paramList.ToArray()).FirstOrDefault();
             return View(user);
         }
         #endregion
